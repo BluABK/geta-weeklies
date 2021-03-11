@@ -1,0 +1,25 @@
+body {
+    /* Force page to use 100% of the document by removing inherent padding and margin */
+    padding: 0;
+    margin: 0;
+}
+
+div.page {
+
+}
+
+div.header {
+
+}
+
+div.menu {
+
+}
+
+div.mainContent {
+
+}
+
+div.footer {
+
+}
