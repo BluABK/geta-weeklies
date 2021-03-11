@@ -2,24 +2,76 @@ body {
     /* Force page to use 100% of the document by removing inherent padding and margin */
     padding: 0;
     margin: 0;
+    background-color: #5DA449;
+    color: white;
 }
 
 div.page {
+    /* Force page class to span the entire document */
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 10fr; 
+    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-areas:    'header header'
+                            'menu mainContent'
+                            'footer footer';
+}
 
+div.spacer {
+    grid-area: spacer;
+    min-width: 100px;
+    background-color: orange;
 }
 
 div.header {
-
+    grid-area: header;
+    /* Make sure element doesn't change height. */
+    min-height: 80px;
+    max-height: 80px;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: center;
 }
 
 div.menu {
+    grid-area: menu;
+    /* Add some spacing to the left. */
+    padding-left: 10px;
+    /* Force a minimum of 30px spacing to the right, avoids issues at small viewport. */
+    margin-right: 30px;
+}
 
+div.menuLinks {
+    padding-left: 5%;
+}
+
+div.menuLinks a {
+    font-size: 1.10em;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+div.menuLinks a:visited {
+    font-size: 1.10em;
+    color:rgb(211, 210, 210);
+    font-weight: bold;
+}
+
+div.menuLinks a:hover {
+    font-size: 1.15em;
+    font-weight: bold;
 }
 
 div.mainContent {
-
+    grid-area: mainContent;
+    overflow-y: auto;
 }
 
 div.footer {
-
+    grid-area: footer;
+    /* Make sure element doesn't size below this height. */
+    min-height: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    text-align: right;
+    padding-right: 30px;
 }
