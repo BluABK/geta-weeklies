@@ -1,12 +1,58 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: deepskyblue;
-    overflow: hidden;
+    overflow: visible;
+    background-color: black;
 }
 
-.snowball {
-    /* stroke: #e6e6e6; */
+#svg-drawing {
+    background-color: deepskyblue;
+    /* padding: 0;
+    margin: 0; */
+}
+
+.svg-ground {
+
+}
+
+.debug {
+    fill: darkorchid;
+}
+
+.snow {
     fill: #ffffff;
+}
+
+.snow-shade {
+    fill: #e6e6e6;
+}
+
+.ball {
+    /* stroke: #e6e6e6; */
     filter: url(#inset-shadow);
+}
+
+.corner {
+    position: absolute;
+    height: 20px;
+}
+
+.top-left {
+    left: 0;
+    top: 0;
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+}
+
+.bottom-left {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
 }

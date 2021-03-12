@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <svg height="100vh" width=100vw>
+    <svg id="svg-drawing" height="720" width="1280" viewbox="0 0 720 1280">
         <!-- Filters and effects -->
         <defs>
             <filter id="inset-shadow">
@@ -26,10 +26,20 @@
             </filter>
         </defs>
 
-        <!-- Structure -->
-        <circle class="svg-snowman snowball" id="bottom" cx="100" cy="150" r="60"></circle>
-        <circle class="svg-snowman snowball" id="middle" cx="100" cy="100" r="50"></circle>
-        <circle class="svg-snowman snowball" id="top" cx="100" cy="50" r="40"></circle>
+        
+        <!-- Structure: Ground -->
+        <!-- <line class="svg-ground snow-shade" id="ground-layer-top" x1="0" y1="500" x2="500" y2="500" stroke-width="30" width="100%"/> -->
+        <!-- FIXME: What is happening to the weird x and y positioning? -->
+        <rect class="svg-ground snow" x="-800" y="780" width="2560" height="500"/>
+        <rect class="svg-ground snow-shade" x="-800" y="780" width="2560" height="10"/>
+
+        <!-- Structure: Sky -->
+
+        <!-- Structure: snowman -->
+        <circle class="svg-snowman snow ball" id="bottom" cx="100" cy="850" r="60"></circle>
+        <circle class="svg-snowman snow ball" id="middle" cx="100" cy="100" r="50"></circle>
+        <circle class="svg-snowman snow ball" id="top" cx="100" cy="50" r="40"></circle>
+
     </svg>
 </body>
 
