@@ -71,3 +71,14 @@ body {
     stroke-width:15;
     stroke-linejoin: round;
 }
+
+.rock {
+    fill: black;
+    stroke: grey;
+}
+
+.mouth {
+    fill: none;
+    stroke: black;
+    stroke-width: 5;
+}
