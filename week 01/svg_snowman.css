@@ -7,9 +7,6 @@ body {
 
 #svg-drawing {
     background-color: deepskyblue;
-    /* background-color: rgb(255, 0, 221); */
-    /* padding: 0;
-    margin: 0; */
 }
 
 .sky-layer {
@@ -18,19 +15,7 @@ body {
     stroke-width: 400;
 }
 
-#sky-top {
-    stroke-opacity: 0.35;
-}
-
-#sky-mid {
-    stroke-opacity: 0.25;
-}
-
-#sky-bottom {
-    stroke-opacity: 0.15;
-}
-
-#sky-single {
+#sky {
     stroke-opacity: 0.05;
     fill-opacity: 0;
     fill: white;
@@ -38,30 +23,19 @@ body {
     stroke-width: 400;
 }
 
-.svg-ground {
-
-}
-
 .debug {
     fill: darkorchid;
 }
 
 .snow {
-    /* fill: #ffffff; */
     fill: url(#snow-gradient);
 }
 
-/* #snow-ground {
-    fill: url(#snow-grou-gradient);
-} */
-
 .snow-shade {
-    /* fill: #e6e6e6; */
     fill: #c5c5c5;
 }
 
 .ball {
-    /* stroke: #e6e6e6; */
     filter: url(#inset-shadow);
 }
 

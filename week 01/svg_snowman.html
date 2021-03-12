@@ -30,34 +30,24 @@
                 <stop offset="100%" style="stop-color:rgb(255, 255, 255);stop-opacity:1" />
               </linearGradient>
         </defs>
-
         
         <!-- Structure: Sky -->
-        <!--                                                   x1  y1     h   x2   y2      -->
-        <!-- 
-        <path class="svg-sky sky-layer" id="sky-top"    d="M -900 0   q 1280 -300 2560 0" />
-        <path class="svg-sky sky-layer" id="sky-mid"    d="M -900 400 q 1280 -300 2560 0" />
-        <path class="svg-sky sky-layer" id="sky-bottom" d="M -900 800 q 1280 -300 2560 0" /> -->
-        <path class="svg-sky" id="sky-single" d="M -900 200 q 1280 -200 2560 0" />
+        <path class="svg-sky" id="sky" d="M -900 200 q 1280 -200 2560 0" />
 
         <!-- Structure: Ground -->
-        <!-- <line class="svg-ground snow-shade" id="ground-layer-top" x1="0" y1="500" x2="500" y2="500" stroke-width="30" width="100%"/> -->
-        <!-- FIXME: What is happening to the weird x and y positioning? -->
         <rect class="svg-ground snow" id="ground-bottom-layer" x="-800" y="780" width="2560" height="500" fill="url(#snow-ground-gradient)" />
         <rect class="svg-ground snow-shade" x="-800" y="780" width="2560" height="10" />
         
-
         <!-- Structure: snowman body -->
-        <circle class="svg-snowman snow ball" id="bottom" cx="300" cy="950" r="100"></circle>
-        <circle class="svg-snowman snow ball" id="middle" cx="300" cy="850" r="90"></circle>
-        <circle class="svg-snowman snow ball" id="top" cx="300" cy="750" r="80"></circle>
+        <circle class="svg-snowman snow ball" id="bottom" cx="300" cy="950" r="100" />
+        <circle class="svg-snowman snow ball" id="middle" cx="300" cy="850" r="90" />
+        <circle class="svg-snowman snow ball" id="top" cx="300" cy="750" r="80" />
 
         <!-- Structure: snowman face -->
-        <circle class="rock" id="eye-left" cx="270" cy="735" r="10"></circle>
-        <circle class="rock" id="eye-right" cx="330" cy="735" r="10"></circle>
+        <circle class="rock" id="eye-left" cx="270" cy="735" r="10" />
+        <circle class="rock" id="eye-right" cx="330" cy="735" r="10" />
         <path class="mouth" d="M 250 780 q 50 50 105 0" />
         <polygon class="carrot" points="290,770 302,820 315,770" />
-
     </svg>
 </body>
 
