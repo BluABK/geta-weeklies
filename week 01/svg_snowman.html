@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Aleksander Berge Kjellsen">
+    <meta name="keywords" content="GET Academy, ABK">
+    <meta name="description" content="SVG Snowman">
+
+    <title>SVG Snowman</title>
+
+    <link rel="stylesheet" type="text/css" href="svg_snowman.css">
+
+</head>
+
+<body>
+    <svg height="100vh" width=100vw>
+        <!-- Filters and effects -->
+        <defs>
+            <filter id="inset-shadow">
+                <feFlood flood-color="black"/>
+                <feComposite operator="out" in2="SourceGraphic"/>
+                <feGaussianBlur stdDeviation="2"/>
+                <feComposite operator="atop" in2="SourceGraphic"/>
+            </filter>
+        </defs>
+
+        <!-- Structure -->
+        <circle class="svg-snowman snowball" id="bottom" cx="100" cy="150" r="60"></circle>
+        <circle class="svg-snowman snowball" id="middle" cx="100" cy="100" r="50"></circle>
+        <circle class="svg-snowman snowball" id="top" cx="100" cy="50" r="40"></circle>
+    </svg>
+</body>
+
+</html>
