@@ -7,8 +7,35 @@ body {
 
 #svg-drawing {
     background-color: deepskyblue;
+    /* background-color: rgb(255, 0, 221); */
     /* padding: 0;
     margin: 0; */
+}
+
+.sky-layer {
+    stroke: rgba(0, 0, 0);
+    fill: none;
+    stroke-width: 400;
+}
+
+#sky-top {
+    stroke-opacity: 0.35;
+}
+
+#sky-mid {
+    stroke-opacity: 0.25;
+}
+
+#sky-bottom {
+    stroke-opacity: 0.15;
+}
+
+#sky-single {
+    stroke-opacity: 0.05;
+    fill-opacity: 0;
+    fill: white;
+    stroke: rgba(0, 0, 0);
+    stroke-width: 400;
 }
 
 .svg-ground {
@@ -30,29 +57,4 @@ body {
 .ball {
     /* stroke: #e6e6e6; */
     filter: url(#inset-shadow);
-}
-
-.corner {
-    position: absolute;
-    height: 20px;
-}
-
-.top-left {
-    left: 0;
-    top: 0;
-}
-
-.top-right {
-    top: 0;
-    right: 0;
-}
-
-.bottom-left {
-    bottom: 0;
-    left: 0;
-}
-
-.bottom-right {
-    bottom: 0;
-    right: 0;
 }
