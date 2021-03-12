@@ -47,11 +47,17 @@ body {
 }
 
 .snow {
-    fill: #ffffff;
+    /* fill: #ffffff; */
+    fill: url(#snow-gradient);
 }
 
+/* #snow-ground {
+    fill: url(#snow-grou-gradient);
+} */
+
 .snow-shade {
-    fill: #e6e6e6;
+    /* fill: #e6e6e6; */
+    fill: #c5c5c5;
 }
 
 .ball {
