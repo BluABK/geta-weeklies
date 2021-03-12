@@ -66,7 +66,8 @@ body {
 }
 
 .carrot {
-    fill:orange;
+    fill:rgb(255, 115, 0);
     stroke:rgb(255, 115, 0);
-    stroke-width:1
+    stroke-width:15;
+    stroke-linejoin: round;
 }
