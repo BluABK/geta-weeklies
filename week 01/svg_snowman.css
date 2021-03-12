@@ -64,3 +64,9 @@ body {
     /* stroke: #e6e6e6; */
     filter: url(#inset-shadow);
 }
+
+.carrot {
+    fill:orange;
+    stroke:rgb(255, 115, 0);
+    stroke-width:1
+}
