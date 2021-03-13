@@ -59,7 +59,8 @@ body {
 
 .stick {
     fill: sienna;
-    stroke: rgb(124, 62, 34);
+    /* stroke: rgb(124, 62, 34); */
+    stroke: rgb(0, 0, 0);
     stroke-width: 1;
     stroke-linejoin: round;
 }
