@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Aleksander Berge Kjellsen">
+    <meta name="keywords" content="GET Academy, ABK">
+    <meta name="description" content="OnClick Quiz!">
+
+    <title>OnClick Quiz!</title>
+
+    <link rel="stylesheet" type="text/css" href="onclick_quiz.css">
+</head>
+
+<body>
+    <div id="quiz-container">
+        <div id="question-container">
+            <p id="question-title">What is the name of the protagonist from the PC game Portal 2?</p>
+            <p id="option1" class="option" onclick="clickedOption(event)">Atlas</p>
+            <p id="option2" class="option" onclick="clickedOption(event)">GlaDOS</p>
+            <p id="option3" class="option" onclick="clickedOption(event)"">Gabe</p>
+            <p id="option4" class="option" onclick="clickedOption(event)">Chell</p>
+            <p id="option5" class="option" onclick="clickedOption(event)">Wheatley</p>
+            <p id="option6" class="option" onclick="clickedOption(event)">Gordon</p>
+            <p id="option7" class="option" onclick="clickedOption(event)">Alyx</p>
+            <hr/>
+            <p id="result">&nbsp;</p>
+        </div>
+    </div>
+
+    <script>
+        function setResultLine(s, color) {
+            let resultLine = document.getElementById("result");
+            
+            resultLine.innerText = s;
+            resultLine.style.color = color;
+        }
+
+        function clickedOption(el) {
+            let correctAnswer = "option4";
+
+            if (el.target.id === correctAnswer) {
+                setResultLine("Correct!", "#33cc33");
+            } else {
+                setResultLine(`Wrong! The correct answer is "${document.getElementById(correctAnswer).innerText}".`, "#ff4a4a");
+            }
+        }
+    </script>
+</body>
+</html>
