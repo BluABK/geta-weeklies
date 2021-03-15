@@ -40,7 +40,7 @@
         function clickedOption(e) {
             let correctAnswer = "option4";
 
-            if (el.target.id === correctAnswer) {
+            if (e.target.id === correctAnswer) {
                 setResultLine("Correct!", "#33cc33");
             } else {
                 setResultLine(`Wrong! The correct answer is "${document.getElementById(correctAnswer).innerText}".`, "#ff4a4a");
