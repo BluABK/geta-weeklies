@@ -21,10 +21,18 @@ body {
 .buttons {
     font-size: 16px;
     font-size: 10vw;
+    background-color: rgb(44, 44, 44);
+    border-color: black;
+}
+
+.buttons:hover {
+    background-color: rgba(0, 0, 0, 0.692);
+    cursor: pointer;
 }
 
 .input-history-container {
     padding: 0;
+    background-color: rgb(44, 44, 44);
 }
 
 
