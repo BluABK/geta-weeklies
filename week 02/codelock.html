@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Aleksander Berge Kjellsen">
+        <meta name="keywords" content="GET Academy, ABK">
+        <meta name="description" content="Task 4: Code Lock">
+
+        <title>FIXME</title>
+
+        <link rel="stylesheet" type="text/css" href="codelock.css">
+
+    </head>
+
+    <body>
+        <div class="page-container">
+            <div class="codelock-container">
+                <button class="buttons" id="btn1" value="1" onclick="buttonClicked(this)">1</button>
+                <button class="buttons" id="btn1" value="2" onclick="buttonClicked(this)">2</button>
+                <button class="buttons" id="btn1" value="3" onclick="buttonClicked(this)">3</button>
+                <button class="buttons" id="btn1" value="4" onclick="buttonClicked(this)">4</button>
+                <button class="buttons" id="btn1" value="5" onclick="buttonClicked(this)">5</button>
+                <button class="buttons" id="btn1" value="6" onclick="buttonClicked(this)">6</button>
+                <button class="buttons" id="btn1" value="7" onclick="buttonClicked(this)">7</button>
+                <button class="buttons" id="btn1" value="8" onclick="buttonClicked(this)">8</button>
+                <button class="buttons" id="btn1" value="9" onclick="buttonClicked(this)">9</button>
+            </div>
+
+            <div class="input-history-container">
+                <p id="input-history-field"></p>
+            </div>
+    </div>
+
+        <script>
+            function buttonClicked(element) {
+                console.log(element);
+                document.getElementById("input-history-field").textContent += (element.textContent);
+            }
+        </script>
+    </body>
+
+</html>
