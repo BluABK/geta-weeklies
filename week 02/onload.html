@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Aleksander Berge Kjellsen">
+        <meta name="keywords" content="GET Academy, ABK">
+        <meta name="description" content="Onload VS function load">
+
+        <title>Task 5: Onload VS loading from function</title>
+
+        <link rel="stylesheet" type="text/css" href="onload.css">
+
+    </head>
+
+    <body onload="bodyLoaded()">
+        <div class="container">
+            <div id="slowload-container">
+                <img id="slowload-pic" src="https://photographingspace.com/wp-content/uploads/2019/10/2019JulyLunarEclipse-Moon0655-CorySchmitz-PI2_wm-web.jpg" width="500px" alt="100 MP picture of the moon" title="100 MP picture of the moon" />
+            </div>
+            <div class="log-container">
+                <div id="date-log"></div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('date-log').innerHTML += '<p>Page loaded at: ' + new Date().toTimeString() + '</p>';
+
+            function bodyLoaded() {
+                document.getElementById('date-log').innerHTML += '<p>Body loaded at: ' + new Date().toTimeString() + '</p>';
+            }
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,15 @@
+.container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr 10fr;
+}
+
+#slowload-pic {
+    /* Black backround so the loading looks less janky. */
+    background-color: black;
+}
+
+.log-container p {
+    /* Make log paragraphs use a nice classic monospace font*/
+    font-family: 'Courier New', Courier, monospace;
+}
