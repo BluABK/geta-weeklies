@@ -5,11 +5,16 @@
         <meta charset="utf-8" />
         <title></title>
     </head>
-    <body>
+    <body style="display: grid;">
         <p>Ferdighet 7 - Sette variabel til resultat av et regnestykke. </p>
         <input id="tallA" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
         <input id="tallB" type="range" min="1" max="100" step="1" oninput="calculate()" value="2" />
         <div id="resultat"></div>
+        <hr/>
+        Width &nbsp;<input id="width-amount" type="range" min="1" max="1000" step="1" oninput="calculate()" value="1" />
+        <br/>
+        Height <input id="height-amount" type="range" min="1" max="1000" step="1" oninput="calculate()" value="1" />
+        <div id="my-div" style="background-color: steelblue; position: relative; width: 1px; height: 1px; overflow: hidden; text-align: center;"></div>
         <script>
             var resultatDiv = document.getElementById('resultat');
             var tallAInput = document.getElementById('tallA');
@@ -29,6 +34,16 @@
                     tallA + '-' + tallB + '=' + differense + '<br/>' +
                     tallA + '*' + tallB + '=' + produkt + '<br/>' +
                     tallA + '/' + tallB + '=' + kvotient;
+                
+                let widthAmount = parseInt(document.getElementById('width-amount').value);
+                let heightAmount = parseInt(document.getElementById('height-amount').value);
+                let area = widthAmount * heightAmount;
+                let circumference = (2 * widthAmount) + (2 * heightAmount);
+
+                document.getElementById('my-div').innerHTML = `<p>Area: ${widthAmount} * ${heightAmount} = ${area}</p>` +
+                                  `<p>Circumference: (2 * ${widthAmount}) + ( 2 * ${heightAmount}) = ${circumference}</p>`;
+                                  document.getElementById('my-div').style.width = `${widthAmount}px`;
+                document.getElementById('my-div').style.height = `${heightAmount}px`;
             }
         </script>
     </body>
