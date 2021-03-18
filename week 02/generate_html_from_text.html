@@ -15,6 +15,12 @@
         <option selected value="green">Green color</option>
         <option value="blue">Blue color</option>
     </select>
+    <select id="borderChooser" onchange="showDiv()">
+        <option value="0">No border</option>
+        <option value="3px solid black">Black border</option>
+        <option value="3px solid grey">Grey border</option>
+    </select>
+    <input id="borderRoundness" type="range" start="0" min="0" max="150" step="0.001" oninput="showDiv()" />
     <div id="resultat"></div>
     <div id="resultatHtml" style="font-family: monospace"></div>
     <script>
@@ -23,6 +29,8 @@
         var sizeSlider = document.getElementById('sizeSlider');
         var textInput = document.getElementById('textInput');
         var colorChooser = document.getElementById('colorChooser');
+        var borderChooser = document.getElementById('borderChooser');
+        var borderRoundness = document.getElementById('borderRoundness');
 
         showDiv();
 
@@ -31,6 +39,8 @@
                 + 'background-color: ' + colorChooser.value + ';'
                 + 'width: ' + sizeSlider.value + 'px;'
                 + 'height: ' + sizeSlider.value + 'px;'
+                + 'border: ' + borderChooser.value + ';'
+                + 'border-radius: ' + borderRoundness.value + 'px;'
                 + '">' +
                 textInput.value + '</div>';
             resultatHtmlDiv.innerText = resultatDiv.innerHTML;
