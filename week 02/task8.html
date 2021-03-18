@@ -6,31 +6,29 @@
         <title></title>
     </head>
     <body>
-        <p>Ferdighet 7a - Sette variabel til tilfeldig tall</p>
-        <div id="resultat"></div>
-        <!--
-        Last siden på nytt for nye tall.
-        Endre tallet 10 på linje 20 og 21 til noe annet. Hva blir annerledes?
-        Endre tallet 100 på linje 20 og 21 til noe annet. Hva blir annerledes?
-        Ta bort Math.floor() på linje 20 og 21. Hva blir forskjellen?
-        -->
+        <div id="value-summary"></div>
+        <div id="result"></div>
 
         <script>
-            var resultatDiv = document.getElementById('resultat');
+            var resultDiv = document.getElementById('result');
+            var valueSummary = document.getElementById('value-summary');
             calculate();
 
             function calculate() {
-                var tallA = 100 + Math.floor(Math.random() * 10);
-                var tallB = 100 + Math.floor(Math.random() * 10);
-                var sum = tallA + tallB;
-                var differense = tallA - tallB;
-                var produkt = tallA * tallB;
-                var kvotient = tallA / tallB;
-                resultatDiv.innerHTML = '' +
-                    tallA + '+' + tallB + '=' + sum + '<br/>' +
-                    tallA + '-' + tallB + '=' + differense + '<br/>' +
-                    tallA + '*' + tallB + '=' + produkt + '<br/>' +
-                    tallA + '/' + tallB + '=' + kvotient;
+                console.log(Math.floor(Math.random() * 100));
+                var rndWidth = Math.floor(Math.random() * 100);
+                var rndHeight =  Math.floor(Math.random() * 100);
+                var rndBorderSize =  Math.floor(Math.random() * 10);
+                
+                resultDiv.style.width = `${rndWidth}px`;
+                resultDiv.style.height = `${rndHeight}px`;
+                resultDiv.style.border = `${rndBorderSize}px black solid`;
+
+                valueSummary.innerHTML = `
+                <p>Width:&nbsp;&nbsp;&nbsp;&nbsp;${rndWidth}px.</p>
+                <p>Height:&nbsp;&nbsp;&nbsp;&nbsp;${rndHeight}px.</p>
+                <p>Border size:&nbsp;&nbsp;&nbsp;&nbsp;${rndBorderSize}px;</p>
+                `;
             }
         </script>
     </body>
