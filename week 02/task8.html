@@ -6,7 +6,7 @@
         <title></title>
     </head>
     <body>
-        <div id="value-summary"></div>
+        <div id="value-summary" style="font-family: 'Courier New', Courier, monospace;"></div>
         <div id="result"></div>
 
         <script>
@@ -25,9 +25,9 @@
                 resultDiv.style.border = `${rndBorderSize}px black solid`;
 
                 valueSummary.innerHTML = `
-                <p>Width:&nbsp;&nbsp;&nbsp;&nbsp;${rndWidth}px.</p>
-                <p>Height:&nbsp;&nbsp;&nbsp;&nbsp;${rndHeight}px.</p>
-                <p>Border size:&nbsp;&nbsp;&nbsp;&nbsp;${rndBorderSize}px;</p>
+                <p>Width:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${rndWidth}px.</p>
+                <p>Height:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${rndHeight}px.</p>
+                <p>Border size:&nbsp;&nbsp;${rndBorderSize}px;</p>
                 `;
             }
         </script>
