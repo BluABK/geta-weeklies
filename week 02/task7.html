@@ -40,8 +40,8 @@
                 let area = widthAmount * heightAmount;
                 let circumference = (2 * widthAmount) + (2 * heightAmount);
 
-                document.getElementById('my-div').innerHTML = `<p>Area: ${widthAmount} * ${heightAmount} = ${area}</p>` +
-                                  `<p>Circumference: (2 * ${widthAmount}) + ( 2 * ${heightAmount}) = ${circumference}</p>`;
+                document.getElementById('my-div').innerHTML = `<div style="display: inline-block; text-align: center;"><p>Area: ${widthAmount} * ${heightAmount} = ${area}</p>` +
+                                  `<p>Circumference: (2 * ${widthAmount}) + ( 2 * ${heightAmount}) = ${circumference}</p></div>`;
                                   document.getElementById('my-div').style.width = `${widthAmount}px`;
                 document.getElementById('my-div').style.height = `${heightAmount}px`;
             }
