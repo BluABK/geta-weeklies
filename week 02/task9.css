@@ -2,3 +2,39 @@
     border: 1px solid gray;
     border-radius: 5px;
 }
+
+.custom-bgcolor {
+    background-color: dodgerblue;
+}
+
+.custom-border {
+    border: 5px solid rgb(243, 117, 255);
+}
+
+.custom-padding {
+    padding: 50px;
+}
+
+.custom-orientation {
+    rotate: 180deg;
+}
+
+.custom-color {
+    color:rgb(255, 198, 43)
+}
+
+#stylable-element {
+    height: 500px;
+    width: 500px;
+
+    /* background-color: black;
+    color: white; */
+}
+
+.checkbox-container {
+    display: block;
+}
+
+.checkbox-group {
+    display: block;
+}

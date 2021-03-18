@@ -9,47 +9,49 @@
 
     </head>
     <body>
-        <p>Ferdighet 8 - Endre andre ting enn innerHTML: value, style</p>
-        <input id="text" type="text"/>
-        <h2 id="overskrift">Overskrift</h2>
-        <button onclick="doSomethingA(this)">A</button>
-        <button onclick="doSomethingB(this)">B</button>
+        <div class="checkbox-container">
+            <div class="checkbox-group">
+                <input id="chk-bgcolor" type="checkbox" onchange="toggleStyle()" />
+                <label for="chk-bgcolor">Background colour</label>
+            </div>
+            <div class="checkbox-group">
+                <input id="chk-border" type="checkbox" onchange="toggleStyle()" />
+                <label for="chk-border">Border</label>
+            </div>
+            <div class="checkbox-group">
+                <input id="chk-padding" type="checkbox" onchange="toggleStyle()" />
+                <label for="chk-padding">Padding</label>
+            </div>
+            <div class="checkbox-group">
+                <input id="chk-orientation" type="checkbox" onchange="toggleStyle()" />
+                <label for="chk-orientation">Orientation</label>
+            </div>
+            <div class="checkbox-group">
+                <input id="chk-color" type="checkbox" onchange="toggleStyle()" />
+                <label for="chk-color">Foreground colour</label>
+            </div>
+        </div>
+        <div id="stylable-element">
+            <h1>Sample text.</h1>
+        </div>
 
         <script>
-            var textInput = document.getElementById('text');
-            var h2Element = document.getElementById('overskrift');
+            function toggleStyle() {
+                let stylableElement = document.getElementById("stylable-element");
+                let bgColorChecked = document.getElementById("chk-bgcolor");
+                let borderChecked = document.getElementById("chk-border");
+                let paddingChecked = document.getElementById("chk-padding");
+                let orientationChecked = document.getElementById("chk-orientation");
+                let colorChecked = document.getElementById("chk-color");
 
-            function doSomethingA(clickedElement) {
-                textInput.style.backgroundColor = 'steelblue';
-                h2Element.style.backgroundColor = 'steelblue';
-                clickedElement.style.backgroundColor = 'steelblue';
+                console.log(bgColorChecked);
+                console.log(bgColorChecked.checked);
 
-                textInput.classList.add('round');
-                h2Element.classList.add('round');
-                clickedElement.classList.add('round');
-
-                textInput.value = "Trykket på knapp A";
-            }
-
-            function doSomethingB(clickedElement) {
-                textInput.style.backgroundColor = 'rgb(129, 180, 61)';
-                h2Element.style.backgroundColor = 'rgb(129, 180, 61)';
-                clickedElement.style.backgroundColor = 'rgb(129, 180, 61)';
-
-                textInput.style.color = 'whitesmoke';
-                h2Element.style.color = 'whitesmoke';
-                clickedElement.style.color = 'whitesmoke';
-
-                textInput.style.fontWeight = 'bolder';
-                h2Element.style.fontWeight = 'bolder';
-                clickedElement.style.fontWeight = 'bolder';
-
-
-                textInput.classList.remove('round');
-                h2Element.classList.remove('round');
-                clickedElement.classList.remove('round');
-
-                textInput.value = "Trykket på knapp B";
+                stylableElement.classList.toggle('custom-bgcolor', bgColorChecked.checked);
+                stylableElement.classList.toggle('custom-border', borderChecked.checked);
+                stylableElement.classList.toggle('custom-padding', paddingChecked.checked);
+                stylableElement.classList.toggle('custom-orientation', orientationChecked.checked);
+                stylableElement.classList.toggle('custom-color', colorChecked.checked);
             }
         </script>
     </body>
