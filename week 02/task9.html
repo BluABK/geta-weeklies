@@ -6,53 +6,87 @@
         <title></title>
 
         <link rel="stylesheet" type="text/css" href="task9.css">
-
     </head>
     <body>
         <div class="checkbox-container">
             <div class="checkbox-group">
-                <input id="chk-bgcolor" type="checkbox" onchange="toggleStyle()" />
+                <input id="chk-bgcolor" name="custom-bgcolor" type="checkbox" onchange="toggleStyle()" />
                 <label for="chk-bgcolor">Background colour</label>
             </div>
             <div class="checkbox-group">
-                <input id="chk-border" type="checkbox" onchange="toggleStyle()" />
-                <label for="chk-border">Border</label>
+                <input id="chk-transform" name="custom-transform" type="checkbox" onchange="toggleStyle()" />
+                <label for="chk-transform">Transform</label>
             </div>
             <div class="checkbox-group">
-                <input id="chk-padding" type="checkbox" onchange="toggleStyle()" />
+                <input id="chk-padding" name="custom-padding" type="checkbox" onchange="toggleStyle()" />
                 <label for="chk-padding">Padding</label>
             </div>
             <div class="checkbox-group">
-                <input id="chk-orientation" type="checkbox" onchange="toggleStyle()" />
+                <input id="chk-orientation" name="custom-orientation" type="checkbox" onchange="toggleStyle()" />
                 <label for="chk-orientation">Orientation</label>
             </div>
             <div class="checkbox-group">
-                <input id="chk-color" type="checkbox" onchange="toggleStyle()" />
+                <input id="chk-color" name="custom-color" type="checkbox" onchange="toggleStyle()" />
                 <label for="chk-color">Foreground colour</label>
             </div>
         </div>
-        <div id="stylable-element">
-            <h1>Sample text.</h1>
+        <div class="element-container">
+            <div id="elem1" class="stylable-element" title="Click to select: Element 1" onclick="selectElement(this)">
+                <h1>Element 1</h1>
+            </div>
+            <div class="spacer"></div>
+            <div id="elem2" class="stylable-element" title="Click to select: Element 2" onclick="selectElement(this)">
+                <h1>Element 2</h1>
+            </div>
         </div>
 
         <script>
+            let selectedElement;
+
+            function updateCheckboxes(element) {
+                for (checkboxGroup of document.getElementsByClassName("checkbox-group")) {
+                    for (child of checkboxGroup.children) {
+                        // Only Perform checked check on input DOM elements.
+                        if (child instanceof HTMLInputElement) {
+                            child.checked = selectedElement.classList.contains(child.name);
+                        }
+                    }
+                }
+            }
+            
+            function selectElement(element) {
+                console.log("Select element", element);
+                
+                // Untoggle old selectedElement if exist.
+                selectedElement && selectedElement.classList.toggle("selected-element", false);
+                
+                // Toggle the newly selected element.
+                element.classList.toggle("selected-element", true);
+                
+                // point selectedElement at the new element.
+                selectedElement = element;
+
+                // Update checkboxes to match the currently selected element's properties.
+                updateCheckboxes(element);
+            }
+
             function toggleStyle() {
-                let stylableElement = document.getElementById("stylable-element");
+                let stylableElement = selectedElement;
                 let bgColorChecked = document.getElementById("chk-bgcolor");
-                let borderChecked = document.getElementById("chk-border");
+                let transformChecked = document.getElementById("chk-transform");
                 let paddingChecked = document.getElementById("chk-padding");
                 let orientationChecked = document.getElementById("chk-orientation");
                 let colorChecked = document.getElementById("chk-color");
 
-                console.log(bgColorChecked);
-                console.log(bgColorChecked.checked);
-
                 stylableElement.classList.toggle('custom-bgcolor', bgColorChecked.checked);
-                stylableElement.classList.toggle('custom-border', borderChecked.checked);
+                stylableElement.classList.toggle('custom-transform', transformChecked.checked);
                 stylableElement.classList.toggle('custom-padding', paddingChecked.checked);
                 stylableElement.classList.toggle('custom-orientation', orientationChecked.checked);
                 stylableElement.classList.toggle('custom-color', colorChecked.checked);
             }
+
+            // Select the first stylable element by default.
+            selectElement(document.getElementsByClassName("stylable-element")[0]);
         </script>
     </body>
 </html>

@@ -4,11 +4,11 @@
 }
 
 .custom-bgcolor {
-    background-color: dodgerblue;
+    background-color: steelblue;
 }
 
-.custom-border {
-    border: 5px solid rgb(243, 117, 255);
+.custom-transform {
+    transform:rotate(45deg);
 }
 
 .custom-padding {
@@ -23,12 +23,34 @@
     color:rgb(255, 198, 43)
 }
 
-#stylable-element {
-    height: 500px;
-    width: 500px;
+.element-container {
+    display: grid;
+    margin-top: 25px;;
+    margin-right: 50px;
+    grid-template-columns: 1fr 1fr 1fr 12fr;
+    grid-template-rows: auto auto;
+                        
+}
 
-    /* background-color: black;
-    color: white; */
+.stylable-element {
+    height: 300px;
+    width: 300px;
+    border: 3px solid;
+    border-style: solid;
+
+    cursor: pointer;
+}
+
+#elem1 {
+    border-color: rgb(255, 184, 53);
+}
+
+#elem2 {
+    border-color: rgb(116, 168, 66);
+}
+
+.selected-element {
+    border-style: dashed;
 }
 
 .checkbox-container {
