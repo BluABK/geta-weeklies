@@ -8,6 +8,9 @@
         div {
             position: absolute;
         }
+        div p {
+            font-size: 20pt;
+        }
     </style>
 </head>
 <body>
@@ -30,7 +33,7 @@
                 delAvStylePx('width', bredde) +
                 delAvStylePx('height', høyde) +
                 delAvStyle('background-color', farge) +
-                '"></div>';
+                '"><p>' + tilfeldigOrd() + '</p></div>';
             document.write(divHtml);
             if (Math.random() < 0.9) tilfeldigFirkant();
         }
@@ -59,9 +62,34 @@
             const charCodeA = 'a'.charCodeAt(0);
             return String.fromCharCode(tall - 10 + charCodeA);
         }
-
+        
         function tilfeldigTall(minimum, maksimum) {
             return minimum + Math.floor(Math.random() * (maksimum - minimum + 1));
+        }
+
+        function tilfeldigBokstav() {
+            var tall = tilfeldigTall(0, 28);
+            const charCodeA = 'a'.charCodeAt(0);
+            
+            if (tall === 28) {
+                return 'å';
+            } else if (tall === 27) {
+                return 'ø';
+            } else if (tall === 26) {
+                return 'æ';
+            } else {
+                return String.fromCharCode(tall + charCodeA);
+            }
+        }
+
+        function tilfeldigOrd() {
+            let mittOrd = '';
+            
+            for (let i = 0; i < 5; i++) {
+                mittOrd += tilfeldigBokstav();
+            }
+
+            return mittOrd;
         }
     </script>
 </body>
