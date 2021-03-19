@@ -5,48 +5,16 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body onload="testOnLoad()">
+<body onload="eventHandler('onload')">
     <p>Ferdighet 2a - Alternative eventhandlere: onchange osv.</p>
-    <input type="text" onchange="testOnChange()" oninput="testOnInput()" onkeydown="testOnKeyDown()" />
-    <h3 onmouseover="testOnMouseOver()" onmouseout="testOnMouseOut()" ondblclick="testOnDoubleClick()" oncontextmenu="testOnContextMenu()">Test test test</h3>
+    <input type="text" onchange="eventHandler('onchange')" oninput="eventHandler('oninput')" onkeydown="eventHandler('onkeydown')" />
+    <h3 onmouseover="eventHandler('onmouseover')" onmouseout="eventHandler('onmouseout')" ondblclick="eventHandler('ondblclick')" oncontextmenu="eventHandler('oncontextmenu')">Test test test</h3>
     <h2 id="info"></h2>
 
     <a href="https://www.w3schools.com/jsref/dom_obj_event.asp">Mer informasjon her</a>
     <script>
-        function testOnLoad() {
-            console.log("onload");
-        }
-
-        function testOnChange() {
-            console.log("onchange");
-        }
-
-        function testOnInput() {
-            console.log("oninput");
-        }
-
-        function testOnMouseOver() {
-            console.log("onmouseover");
-        }
-
-        function testOnMouseOut() {
-            console.log("onmouseout");
-        }
-
-        function testOnMouseOut() {
-            console.log("onmouseout");
-        }
-
-        function testOnDoubleClick() {
-            console.log("ondblclick");
-        }
-
-        function testOnContextMenu() {
-            console.log("oncontextmenu");
-        }
-
-        function testOnKeyDown() {
-            console.log("onkeydown");
+        function eventHandler(msg) {
+            console.log(msg);
         }
     </script>
 </body>
