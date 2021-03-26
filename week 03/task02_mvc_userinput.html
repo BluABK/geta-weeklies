@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+    </head>
+    <body style="display: grid;">
+        <div id="app"></div>
+        <script>
+            // Model
+            let tallA = 2;
+            let tallB = 2;
+            let sum = tallA + tallB;
+            let differense = tallA - tallB;
+            let produkt = tallA * tallB;
+            let kvotient = tallA / tallB;
+            let heightAmount = 1;
+            let widthAmount = 1;
+            let area = 0;
+            let circumference = 0;
+            
+            // View
+            function updateView() {
+                document.getElementById("app").innerHTML = `
+                <p>Ferdighet 7 - Sette variabel til resultat av et regnestykke. </p>
+                <input id="tall-a" type="range" min="1" max="100" step="1" oninput="tallA = this.value" value="${tallA}" />
+                <input id="tall-b" type="range" min="1" max="100" step="1" oninput="tallB = this.value" value="${tallB}" />
+                <div id="resultat">
+                    ${tallA} + ${tallB} = ${sum} <br/>
+                    ${tallA} - ${tallB} = ${differense} <br/>
+                    ${tallA} * ${tallB} = ${produkt} <br/>
+                    ${tallA} / ${tallB} = ${kvotient}
+                </div>
+                <hr/>
+                Width &nbsp;<input id="width-amount" type="range" min="1" max="1000" step="1" oninput="widthAmount = this.value" value="${widthAmount}" />
+                <br/>
+                Height <input id="height-amount" type="range" min="1" max="1000" step="1" oninput="heightAmount = this.value" value="${heightAmount}" />
+                <div id="my-div" style="background-color: steelblue; position: relative; width: ${widthAmount}px; height: ${heightAmount}px; overflow: hidden; text-align: center;">
+                    <div style="display: inline-block; text-align: center;">
+                        <p>Area: ${widthAmount} * ${heightAmount} = ${area}</p>
+                        <p>Circumference: (2 * ${widthAmount}) + ( 2 * ${heightAmount}) = ${circumference}</p>
+                    </div>
+                </div>
+                `;
+
+                // Add listenters
+                document.getElementById("tall-a").addEventListener("change", calculate);
+                document.getElementById("tall-b").addEventListener("change", calculate);
+                document.getElementById("width-amount").addEventListener("change", calculate);
+                document.getElementById("height-amount").addEventListener("change", calculate);
+            }
+
+            // Controller
+            calculate();
+
+            function calculate() {
+                sum = tallA + tallB;
+                differense = tallA - tallB;
+                produkt = tallA * tallB;
+                kvotient = tallA / tallB;
+                
+                area = widthAmount * heightAmount;
+                circumference = (2 * widthAmount) + (2 * heightAmount);
+
+                updateView();
+            }
+            
+            // Draw view
+            updateView();
+        </script>
+    </body>
+</html>
