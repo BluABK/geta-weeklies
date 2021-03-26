@@ -24,8 +24,8 @@
             function updateView() {
                 document.getElementById("app").innerHTML = `
                 <p>Ferdighet 7 - Sette variabel til resultat av et regnestykke. </p>
-                <input id="tall-a" type="range" min="1" max="100" step="1" oninput="tallA = this.value" value="${tallA}" />
-                <input id="tall-b" type="range" min="1" max="100" step="1" oninput="tallB = this.value" value="${tallB}" />
+                <input id="tall-a" type="range" min="1" max="100" step="1" onchange="tallA = this.value" value="${tallA}" />
+                <input id="tall-b" type="range" min="1" max="100" step="1" onchange="tallB = this.value" value="${tallB}" />
                 <div id="resultat">
                     ${tallA} + ${tallB} = ${sum} <br/>
                     ${tallA} - ${tallB} = ${differense} <br/>
@@ -33,9 +33,9 @@
                     ${tallA} / ${tallB} = ${kvotient}
                 </div>
                 <hr/>
-                Width &nbsp;<input id="width-amount" type="range" min="1" max="1000" step="1" oninput="widthAmount = this.value" value="${widthAmount}" />
+                Width &nbsp;<input id="width-amount" type="range" min="1" max="1000" step="1" onchange="widthAmount = this.value" value="${widthAmount}" />
                 <br/>
-                Height <input id="height-amount" type="range" min="1" max="1000" step="1" oninput="heightAmount = this.value" value="${heightAmount}" />
+                Height <input id="height-amount" type="range" min="1" max="1000" step="1" onchange="heightAmount = this.value" value="${heightAmount}" />
                 <div id="my-div" style="background-color: steelblue; position: relative; width: ${widthAmount}px; height: ${heightAmount}px; overflow: hidden; text-align: center;">
                     <div style="display: inline-block; text-align: center;">
                         <p>Area: ${widthAmount} * ${heightAmount} = ${area}</p>
@@ -52,8 +52,6 @@
             }
 
             // Controller
-            calculate();
-
             function calculate() {
                 sum = tallA + tallB;
                 differense = tallA - tallB;
@@ -65,8 +63,15 @@
 
                 updateView();
             }
+
+            function updateTallA(num) {
+                tallA = num;
+            }
             
-            // Draw view
+            // Do initial calc.
+            calculate();
+            
+            // Draw view.
             updateView();
         </script>
     </body>
