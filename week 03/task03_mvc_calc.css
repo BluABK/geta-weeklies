@@ -1,4 +1,4 @@
-div {
+.calc-div {
     float: left;
     background-color: rgb(184, 227, 245);
     width: 50px;
@@ -19,14 +19,16 @@ div {
     src: url("./digital-7.mono.ttf");
 }
 
-div.resultBox {
+.calc-div.resultBox {
     width: 344px;
     text-align: right;
     font-family: 'digital-clock-font';
     font-size: 3em;
     cursor: auto;
+    /* Make sure text doesn't escape the screen. */
+    overflow-x: hidden;
 }
 
-div.firstInRow {
+.calc-div.firstInRow {
     clear: left;
 }
