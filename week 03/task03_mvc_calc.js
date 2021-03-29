@@ -1,10 +1,12 @@
 // Model
 let resultBoxInnerHTML = "";
+let resultValue = 0;
+
 
 // View
 function updateView() {
     document.getElementById("app").innerHTML = `
-    <div id="resultBox" class="calc-div resultBox" id="screen"></div>
+    <div id="resultBox" class="calc-div resultBox" id="screen">${resultBoxInnerHTML}</div>
 
     <div class="calc-div firstInRow" onclick="addCharacter(7)">7</div>
     <div class="calc-div" onclick="addCharacter(8)">8</div>
@@ -30,18 +32,24 @@ function updateView() {
 
 // Controller
 function addCharacter(x) {
-    resultBox.innerHTML += x;
+    resultBoxInnerHTML += x;
+
+    updateView();
 }
 
 function calculate() {
-    var calculation = resultBox
-        .innerHTML
+    var calculation = resultBoxInnerHTML
         .replace('×', '*')
         .replace('÷', '/');
-    resultBox.innerHTML = eval(calculation);
+        resultBoxInnerHTML = eval(calculation);
+
+    updateView();
 }
+
 function clearResult() {
-    resultBox.innerHTML = '';
+    resultBoxInnerHTML = '';
+
+    updateView();
 }
 
 updateView();
