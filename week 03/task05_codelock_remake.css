@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(44, 44, 44);
+}
+
+.page-container {
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 80% 20%;
+}
+
+.codelock-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+}
+
+.buttons {
+    font-size: 16px;
+    font-size: 10vw;
+    background-color: rgb(44, 44, 44);
+    border-color: black;
+}
+
+.buttons:hover {
+    background-color: rgba(0, 0, 0, 0.692);
+    cursor: pointer;
+}
+
+.input-history-container {
+    padding: 0;
+    background-color: rgb(44, 44, 44);
+}
+
+
+#input-history-field {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    font-size: 9vw;
+}

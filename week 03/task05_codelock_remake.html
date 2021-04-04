@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Aleksander Berge Kjellsen">
+        <meta name="keywords" content="GET Academy, ABK">
+        <meta name="description" content="Task 4: Code Lock">
+
+        <title>Codelock</title>
+
+        <link rel="stylesheet" type="text/css" href="codelock.css">
+
+    </head>
+
+    <body>
+        <div class="page-container">
+            <div class="codelock-container">
+                <button class="buttons" id="btn1" value="1" onclick="buttonClicked(this)"><span style="color:#3859ff">1</span></button>
+                <button class="buttons" id="btn2" value="2" onclick="buttonClicked(this)"><span style="color:#497ef6">2</span></button>
+                <button class="buttons" id="btn3" value="3" onclick="buttonClicked(this)"><span style="color:#16ecc2">3</span></button>
+                <button class="buttons" id="btn4" value="4" onclick="buttonClicked(this)"><span style="color:#05f55a">4</span></button>
+                <button class="buttons" id="btn5" value="5" onclick="buttonClicked(this)"><span style="color:#c4f307">5</span></button>
+                <button class="buttons" id="btn6" value="6" onclick="buttonClicked(this)"><span style="color:#f0e412">6</span></button>
+                <button class="buttons" id="btn7" value="7" onclick="buttonClicked(this)"><span style="color:#fbca00">7</span></button>
+                <button class="buttons" id="btn8" value="8" onclick="buttonClicked(this)"><span style="color:#db0228">8</span></button>
+                <button class="buttons" id="btn9" value="9" onclick="buttonClicked(this)"><span style="color:#b83366">9</span></button>
+            </div>
+
+            <div class="input-history-container">
+                <p id="input-history-field"></p>
+            </div>
+    </div>
+
+        <script>
+            function buttonClicked(element) {
+                document.getElementById("input-history-field").innerHTML += element.innerHTML;
+            }
+        </script>
+    </body>
+
+</html>
