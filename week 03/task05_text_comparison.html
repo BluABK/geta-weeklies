@@ -6,47 +6,87 @@
     <title></title>
 </head>
 <body>
-    <p>Ferdighet 9b - Valgsetninger - Sammenligne to tekster</p>
-    <div id="info"></div>
-    <p>Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102)</p>
-    <input type="text" id="txt1" oninput="findFirst()" value="Per" /><br />
-    <input type="text" id="txt2" oninput="findFirst()" value="Pål" /><br />
-    <input type="text" id="txt3" oninput="findFirst()" value="Espen" /><br />
+    <div id="app"></div>
+    
     <script>
-        var infoDiv = document.getElementById('info');
-        var txtDiv1 = document.getElementById('txt1');
-        var txtDiv2 = document.getElementById('txt2');
-        var txtDiv3 = document.getElementById('txt3');
+        // Model.
+        let infoText = '';
+        let txt1 = 'Per';
+        let txt2 = 'Pål';
+        let txt3 = 'Espen';
+        let lastFocusedElementId = null;
+        let lastCaretPosition = null;
 
-        findFirst();
+        // View.
+        function show() {
+            document.getElementById("app").innerHTML = `
+            <p>Ferdighet 9b - Valgsetninger - Sammenligne to tekster</p>
+            <div id="info">${infoText}</div>
+            <p>Endre på tekstene! (Prøv også å fylle ut tall: 11, 101, 102)</p>
+            <input type="text" id="txt1" oninput="findFirst(this)" value="${txt1}" /><br />
+            <input type="text" id="txt2" oninput="findFirst(this)" value="${txt2}" /><br />
+            <input type="text" id="txt3" oninput="findFirst(this)" value="${txt3}" /><br />
+            `;
 
-        function findFirst() {
-            var txt1 = txtDiv1.value;
-            var txt2 = txtDiv2.value;
-            var txt3 = txtDiv3.value;
-
-            infoDiv.innerText = '';
-
-            if (txt1 == txt2) infoDiv.innerHTML += 'Tekst 1 og 2 er like<br/>';
-            if (txt1 != txt2) infoDiv.innerHTML += '<del>Tekst 1 og 2 er like</del><br/>';
-
-            //if (txt1 == txt2) infoDiv.innerHTML += 'Tekst 1 og 2 er like<br/>';
-            //else infoDiv.innerHTML += '<del>Tekst 1 og 2 er like</del><br/>';
-
-            if (txt1 == txt3) infoDiv.innerHTML += 'Tekst 1 og 3 er like<br/>';
-            if (txt1 != txt3) infoDiv.innerHTML += '<del>Tekst 1 og 3 er like</del><br/>';
-            if (txt3 == txt2) infoDiv.innerHTML += 'Tekst 2 og 3 er like<br/>';
-            if (txt3 != txt2) infoDiv.innerHTML += '<del>Tekst 2 og 3 er like</del><br/>';
-
-            infoDiv.innerHTML += 'Om vi sorterer de tre tekstene, er denne den første:<br/>';
-            if (txt1 <= txt2) {
-                if (txt3 <= txt1) infoDiv.innerHTML += txt3;
-                else infoDiv.innerHTML += txt1;
-            } else {
-                if (txt3 <= txt2) infoDiv.innerHTML += txt3;
-                else infoDiv.innerHTML += txt2;
-            }
+            // Fix focus loss when redrawing page.
+            if (lastFocusedElementId != null) document.getElementById(lastFocusedElementId).focus();
+            
+            // Put caret at the last position instead of start of text.
+            if (lastCaretPosition != null) document.getElementById(lastFocusedElementId).selectionStart = parseInt(lastCaretPosition);
         }
+
+        // Controller.
+        function findFirst(textInputElement) {
+            if (textInputElement) {                
+                // Set element as last focused element (helper to avoid annoying focus loss on page redraw).
+                lastFocusedElementId = textInputElement.id;
+
+                // Set caret last position.
+                lastCaretPosition = textInputElement.selectionStart;
+                
+                // Update relevant txtX's value.
+                switch (textInputElement.id) {
+                    case "txt1": 
+                        txt1 = textInputElement.value;
+                        break;
+                    case "txt2": 
+                        txt2 = textInputElement.value;
+                        break;
+                    case "txt3": 
+                        txt3 = textInputElement.value;
+                        break;
+                }
+            }
+
+            // Clear old info text to avoid it spam-scrolling down the page on every input.
+            infoText = '';
+
+            if (txt1 == txt2) infoText += 'Tekst 1 og 2 er like<br/>';
+            if (txt1 != txt2) infoText += '<del>Tekst 1 og 2 er like</del><br/>';
+
+            //if (txt1 == txt2) infoText += 'Tekst 1 og 2 er like<br/>';
+            //else infoText += '<del>Tekst 1 og 2 er like</del><br/>';
+
+            if (txt1 == txt3) infoText += 'Tekst 1 og 3 er like<br/>';
+            if (txt1 != txt3) infoText += '<del>Tekst 1 og 3 er like</del><br/>';
+            if (txt3 == txt2) infoText += 'Tekst 2 og 3 er like<br/>';
+            if (txt3 != txt2) infoText += '<del>Tekst 2 og 3 er like</del><br/>';
+
+            infoText += 'Om vi sorterer de tre tekstene, er denne den første:<br/>';
+            if (txt1 <= txt2) {
+                if (txt3 <= txt1) infoText += txt3;
+                else infoText += txt1;
+            } else {
+                if (txt3 <= txt2) infoText += txt3;
+                else infoText += txt2;
+            }
+            
+            show();
+        }
+        
+        // Set initial values.
+        show();
+        findFirst();
     </script>
 </body>
 </html>
