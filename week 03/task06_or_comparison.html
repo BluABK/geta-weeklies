@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Aleksander Berge Kjellsen">
+        <meta name="keywords" content="GET Academy, ABK">
+        <meta name="description" content="Week 3, Task 6: Compare multiple things at once (OR).">
+
+        <title>Week 3, Task 6: Compare multiple things at once (OR).</title>
+
+        <link rel="stylesheet" type="text/css" href="task06_or_comparison.css">
+
+    </head>
+
+    <body>
+        <div id="app"></div>
+        
+        <script>
+            // Model
+            let currentColour = 'white';
+            let lastSelected = 0;
+
+
+            // View
+            function show() {
+                document.getElementById("app").innerHTML = `
+                <div class="preview" style="background-color: ${currentColour};"></div>
+                <select onchange="setBgColor(this)">
+                    <option id="opt0" value="" ${lastSelected == 0 ? "selected" : ""} disabled hidden>Select colour</option>
+                    <option id="opt1" value="rgb(0, 0, 0)" ${lastSelected == 1 ? "selected" : ""}>black</option>
+                    <option id="opt2" value="rgb(11, 62, 95)" ${lastSelected == 2 ? "selected" : ""}>dark blue</option>
+                    <option id="opt3" value="rgb(223, 223, 223)" ${lastSelected == 3 ? "selected" : ""}>light grey</option>
+                    <option id="opt4" value="rgb(141, 255, 113)" ${lastSelected == 4 ? "selected" : ""}>light green</option>
+                    <option id="opt5" value="rgb(255, 113, 113)" ${lastSelected == 5 ? "selected" : ""}>light red</option>
+                </select>
+                `;
+            }
+
+            // Controller
+            function setBgColor(selectElement) {
+                console.log(selectElement);
+                currentColour = selectElement.value;
+                lastSelected = selectElement.selectedIndex;
+                
+                show();
+            }
+
+            show();
+        </script>
+    </body>
+
+</html>
