@@ -19,31 +19,40 @@
         
         <script>
             // Model
-            let currentColour = 'white';
+            let currentBgColour = 'white';
+            let currentFgColour = 'black';
             let lastSelected = 0;
 
 
             // View
             function show() {
                 document.getElementById("app").innerHTML = `
-                <div class="preview" style="background-color: ${currentColour};"></div>
+                <div class="preview" style="background-color: ${currentBgColour}; color: ${currentFgColour};">Sample text</div>
                 <select onchange="setBgColor(this)">
-                    <option id="opt0" value="" ${lastSelected == 0 ? "selected" : ""} disabled hidden>Select colour</option>
-                    <option id="opt1" value="rgb(0, 0, 0)" ${lastSelected == 1 ? "selected" : ""}>black</option>
-                    <option id="opt2" value="rgb(11, 62, 95)" ${lastSelected == 2 ? "selected" : ""}>dark blue</option>
-                    <option id="opt3" value="rgb(223, 223, 223)" ${lastSelected == 3 ? "selected" : ""}>light grey</option>
-                    <option id="opt4" value="rgb(141, 255, 113)" ${lastSelected == 4 ? "selected" : ""}>light green</option>
-                    <option id="opt5" value="rgb(255, 113, 113)" ${lastSelected == 5 ? "selected" : ""}>light red</option>
+                    <option id="opt-none" value="" ${lastSelected == 0 ? "selected" : ""} disabled hidden>Select colour</option>
+                    <option id="opt-black" value="rgb(0, 0, 0)" ${lastSelected == 1 ? "selected" : ""}>black</option>
+                    <option id="opt-darkblue" value="rgb(11, 62, 95)" ${lastSelected == 2 ? "selected" : ""}>dark blue</option>
+                    <option id="opt-lightgrey" value="rgb(223, 223, 223)" ${lastSelected == 3 ? "selected" : ""}>light grey</option>
+                    <option id="opt-lightgreen" value="rgb(141, 255, 113)" ${lastSelected == 4 ? "selected" : ""}>light green</option>
+                    <option id="opt-lightred" value="rgb(255, 113, 113)" ${lastSelected == 5 ? "selected" : ""}>light red</option>
                 </select>
                 `;
             }
 
             // Controller
             function setBgColor(selectElement) {
-                console.log(selectElement);
-                currentColour = selectElement.value;
+                let optionId = selectElement.selectedOptions[0].id;
+                
+                currentBgColour = selectElement.value;
                 lastSelected = selectElement.selectedIndex;
                 
+                // Change foreground colour if certain conditions match.
+                if (optionId == "opt-black" || optionId == "opt-darkblue") {
+                    currentFgColour = "white";
+                } else {
+                    currentFgColour = "black";
+                }
+
                 show();
             }
 
