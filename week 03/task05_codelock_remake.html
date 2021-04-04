@@ -10,33 +10,72 @@
 
         <title>Codelock</title>
 
-        <link rel="stylesheet" type="text/css" href="codelock.css">
+        <link rel="stylesheet" type="text/css" href="task05_codelock_remake.css">
 
     </head>
 
     <body>
-        <div class="page-container">
-            <div class="codelock-container">
-                <button class="buttons" id="btn1" value="1" onclick="buttonClicked(this)"><span style="color:#3859ff">1</span></button>
-                <button class="buttons" id="btn2" value="2" onclick="buttonClicked(this)"><span style="color:#497ef6">2</span></button>
-                <button class="buttons" id="btn3" value="3" onclick="buttonClicked(this)"><span style="color:#16ecc2">3</span></button>
-                <button class="buttons" id="btn4" value="4" onclick="buttonClicked(this)"><span style="color:#05f55a">4</span></button>
-                <button class="buttons" id="btn5" value="5" onclick="buttonClicked(this)"><span style="color:#c4f307">5</span></button>
-                <button class="buttons" id="btn6" value="6" onclick="buttonClicked(this)"><span style="color:#f0e412">6</span></button>
-                <button class="buttons" id="btn7" value="7" onclick="buttonClicked(this)"><span style="color:#fbca00">7</span></button>
-                <button class="buttons" id="btn8" value="8" onclick="buttonClicked(this)"><span style="color:#db0228">8</span></button>
-                <button class="buttons" id="btn9" value="9" onclick="buttonClicked(this)"><span style="color:#b83366">9</span></button>
-            </div>
-
-            <div class="input-history-container">
-                <p id="input-history-field"></p>
-            </div>
-    </div>
+        <div id="app" class="page-container"></div>
 
         <script>
-            function buttonClicked(element) {
-                document.getElementById("input-history-field").innerHTML += element.innerHTML;
+            // Model.
+            let inputHistory = '';
+            let inputValueHistory = '';
+            let code = "1337";
+            let unlocked = false;
+            let infoText = '';
+            let buttonDisabledColor = "grey";
+
+            // View.
+            function show() {
+                document.getElementById("app").innerHTML = `
+                    <div class="codelock-container">
+                        <button class="button" id="btn1" value="1" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#3859ff" : buttonDisabledColor}">1</span></button>
+                        <button class="button" id="btn2" value="2" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#497ef6" : buttonDisabledColor}">2</span></button>
+                        <button class="button" id="btn3" value="3" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#16ecc2" : buttonDisabledColor}">3</span></button>
+                        <button class="button" id="btn4" value="4" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#05f55a" : buttonDisabledColor}">4</span></button>
+                        <button class="button" id="btn5" value="5" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#c4f307" : buttonDisabledColor}">5</span></button>
+                        <button class="button" id="btn6" value="6" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#f0e412" : buttonDisabledColor}">6</span></button>
+                        <button class="button" id="btn7" value="7" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#fbca00" : buttonDisabledColor}">7</span></button>
+                        <button class="button" id="btn8" value="8" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#db0228" : buttonDisabledColor}">8</span></button>
+                        <button class="button" id="btn9" value="9" onclick="buttonClicked(this)"><span style="color:${unlocked == false ? "#b83366" : buttonDisabledColor}">9</span></button>
+                    </div>
+
+                    <div class="input-history-container">
+                        <p id="input-history-field">${inputHistory}</p>
+                    </div>
+                `;
             }
+
+            // Controller.
+            function deactivate() {
+                for (let button of document.getElementsByClassName("buttons")) {
+                    button.disabled = true;
+                }
+            }
+
+            function buttonClicked(element) {
+                // If already unlocked don't do anything further.
+                if (unlocked) return;
+                
+                inputHistory += element.innerHTML;
+                inputValueHistory += element.value;
+
+                // Check that sufficient digits have been entered to match combination.
+                if (inputValueHistory.length >= code.length) {
+                    // Check if the last 4 digits equals the correct combination.
+                    if (inputValueHistory.slice(-4) == code) {
+                        unlocked = true;
+                        inputHistory = `<span style="color:#05f55a">Unlocked!</span>`;
+                        deactivate();
+                    }
+                }
+
+                show();
+            }
+            
+            // Initial update View.
+            show();
         </script>
     </body>
 
