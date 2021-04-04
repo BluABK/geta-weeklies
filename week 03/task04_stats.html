@@ -31,9 +31,19 @@
 
         // controller
         function add() {
+            sum+=parseInt(inputValue);
+            count++;
+            inputValue = '';
+
+            show();
         }
 
         function reset() {
+            sum = 0;
+            count = 0;
+            inputValue = '';
+            
+            show();
         }
 
     </script>
