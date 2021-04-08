@@ -7,15 +7,13 @@
 </head>
 <body>
     <div id="app"></div>
-    <ul>
-        <li>Oppgave: Legg til en ting til i pizza-bestillingen, for eksempel firkantet eller rund pizza</li>
-    </ul>
     <script>
         // Model
         let infoText = "Gjør ett valg på hver linje:";
         let bunn = "";
         let fyll = "";
         let str = "";
+        let formFaktor = "";
         let btnBestillDisabled = true;
 
         // View
@@ -52,6 +50,13 @@
             <label for="strLiten">Liten</label>
             <br />
 
+            Form:
+            <input id="formRund" type="radio" name="formRund" onchange="settForm('Rund')" value="Rund" ${formFaktor == "Rund" ? "checked" : ""} />
+            <label for="formRund">Rund</label>
+            <input id="formFirkantet" type="radio" name="formFirkantet" onchange="settForm('Firkantet')" ${formFaktor == "Firkantet" ? "checked" : ""} />
+            <label for="formFirkantet">Firkantet</label>
+            <br />
+
             <button id="bestill" ${btnBestillDisabled ? "disabled" : ""} onclick="alert('Bestilt!');">Bestill</button>
             `;
         }
@@ -71,9 +76,14 @@
             str = s;
             info();
         }
+        
+        function settForm(s) {
+            formFaktor = s;
+            info();
+        }
 
         function info() {
-            if (bunn != "" && fyll != "" && str != "") {
+            if (bunn != "" && fyll != "" && str != "" && formFaktor != "") {
                 infoText = 'Du har fylt ut alt og er klar til å bestille!';
                 btnBestillDisabled = false;
             } else {
@@ -81,6 +91,7 @@
                 if (bunn == "") infoText += '<li>bunn</li>';
                 if (fyll == "") infoText += '<li>fyll</li>';
                 if (str == "")  infoText += '<li>størrelse</li>';
+                if (formFaktor == "")  infoText += '<li>form</li>';
             }
 
             updateView();
