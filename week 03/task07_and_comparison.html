@@ -6,61 +6,86 @@
     <title></title>
 </head>
 <body>
-    <p>Ferdighet 9f - Valgsetninger - Sammenligne flere ting på en gang (og og eller sammen)</p>
-    <h3>Pizza-bestilling</h3>
-    <div id="info" style="padding-bottom: 20px;">Gjør ett valg på hver linje:</div>
-
-    Bunn: <input id="tykkBunn" type="radio" name="bunn" onchange="info()" />Tykk
-    <input id="tynnBunn" type="radio" name="bunn" onchange="info()" />Tynn <br />
-
-    Fyll: <input id="fyllTaco" type="radio" name="fyll" onchange="info()" />Taco
-    <input id="fyllKylling" type="radio" name="fyll" onchange="info()" />Kylling
-    <input id="fyllPepperoni" type="radio" name="fyll" onchange="info()" />Pepperoni<br />
-
-    Størrelse: <input id="stor" type="radio" name="str" onchange="info()" />Stor
-    <input id="middels" type="radio" name="str" onchange="info()" />Middels
-    <input id="liten" type="radio" name="str" onchange="info()" />Liten<br />
-
-    <button id="bestill" disabled="" onclick="alert('Bestilt!');">Bestill</button>
+    <div id="app"></div>
     <ul>
         <li>Oppgave: Legg til et fyll til</li>
         <li>Oppgave: Legg til en ting til i pizza-bestillingen, for eksempel firkantet eller rund pizza</li>
     </ul>
     <script>
-        var btnBestill = document.getElementById('bestill');
-        var infoDiv = document.getElementById('info');
-        var bunnTykk = document.getElementById('tykkBunn');
-        var bunnTynn = document.getElementById('tynnBunn');
-        var fyllTaco = document.getElementById('fyllTaco');
-        var fyllKylling = document.getElementById('fyllKylling');
-        var fyllPepperoni = document.getElementById('fyllPepperoni');
-        var strStor = document.getElementById('stor');
-        var strMiddels = document.getElementById('middels');
-        var strLiten = document.getElementById('liten');
+        // Model
+        let infoText = "Gjør ett valg på hver linje:";
+        let bunn = "";
+        let fyll = "";
+        let str = "";
+        let btnBestillDisabled = true;
+
+        // View
+        function updateView() {
+            document.getElementById("app").innerHTML = `
+            <p>Ferdighet 9f - Valgsetninger - Sammenligne flere ting på en gang (og og eller sammen)</p>
+            <h3>Pizza-bestilling</h3>
+            <div id="info" style="padding-bottom: 20px;">${infoText}</div>
+
+            Bunn: 
+            <input id="tykkBunn" type="radio" name="bunnTykk" onchange="settBunn('Tykk')" ${bunn == "Tykk" ? "checked" : ""} />
+            <label for="bunnTykk">Tykk</label>
+            <input id="tynnBunn" type="radio" name="bunnTynn" onchange="settBunn('Tynn')" ${bunn == "Tynn" ? "checked" : ""} />
+            <label for="bunnTynn">Tynn</label>
+            <br />
+
+            Fyll: 
+            <input id="fyllTaco" type="radio" name="fyllTaco" onchange="settFyll('Taco')" ${fyll == "Taco" ? "checked" : ""} />
+            <label for="fyllTaco">Taco</label>
+            <input id="fyllKylling" type="radio" name="fyllKylling" onchange="settFyll('Kylling')" ${fyll == "Kylling" ? "checked" : ""} />
+            <label for="fyllKylling">Kylling</label>
+            <input id="fyllPepperoni" type="radio" name="fyllPepperoni" onchange="settFyll('Pepperoni')" ${fyll == "Pepperoni" ? "checked" : ""} />
+            <label for="fyllPepperoni">Pepperoni</label>
+            <br />
+
+            Størrelse: 
+            <input id="stor" type="radio" name="strStor" onchange="settStr('Stor')" value="Stor" ${str == "Stor" ? "checked" : ""} />
+            <label for="strStor">Stor</label>
+            <input id="middels" type="radio" name="strMiddels" onchange="settStr('Middels')" ${str == "Middels" ? "checked" : ""} />
+            <label for="strMiddels">Middels</label>
+            <input id="liten" type="radio" name="strLiten" onchange="settStr('Liten')" ${str == "Liten" ? "checked" : ""} />
+            <label for="strLiten">Liten</label>
+            <br />
+
+            <button id="bestill" ${btnBestillDisabled ? "disabled" : ""} onclick="alert('Bestilt!');">Bestill</button>
+            `;
+        }
+
+        // Controller
+        function settBunn(s) {
+            bunn = s;
+            info();
+        }
+
+        function settFyll(s) {
+            fyll = s;
+            info();
+        }
+
+        function settStr(s) {
+            str = s;
+            info();
+        }
 
         function info() {
-            if ((bunnTykk.checked || bunnTynn.checked) &&
-                (fyllTaco.checked || fyllKylling.checked || fyllPepperoni.checked) &&
-                (strStor.checked || strMiddels.checked || strLiten.checked)) {
-                infoDiv.innerHTML = 'Du har fylt ut alt og er klar til å bestille!';
-                btnBestill.disabled = false;
+            if (bunn != "" && fyll != "" && str != "") {
+                infoText = 'Du har fylt ut alt og er klar til å bestille!';
+                btnBestillDisabled = false;
             } else {
-                infoDiv.innerHTML = 'Du har ikke valgt:';
-                //if (bunnTykk.checked || bunnTynn.checked) {                    
-                //} else {
-                //    infoDiv.innerHTML += '<li>bunn</li>';
-                //}
-                if (!bunnTykk.checked && !bunnTynn.checked) {
-                    infoDiv.innerHTML += '<li>bunn</li>';
-                }
-                if (!fyllTaco.checked && !fyllKylling.checked && !fyllPepperoni.checked) {
-                    infoDiv.innerHTML += '<li>fyll</li>';
-                }
-                if (!strStor.checked && !strMiddels.checked && !strLiten.checked) {
-                    infoDiv.innerHTML += '<li>størrelse</li>';
-                }
+                infoText = 'Du har ikke valgt:';
+                if (bunn == "") infoText += '<li>bunn</li>';
+                if (fyll == "") infoText += '<li>fyll</li>';
+                if (str == "")  infoText += '<li>størrelse</li>';
             }
+
+            updateView();
         }
+    
+        updateView();
     </script>
 </body>
 </html>
