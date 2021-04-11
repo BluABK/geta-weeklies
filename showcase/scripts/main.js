@@ -1,8 +1,8 @@
 // Model
-const MENU_FILE_PATH = "/showcase/includes.html";
+const MENU_FILE_PATH = "showcase/includes.html";
 let menuBarDiv = `<div id="menu-bar"></div>`;
 let menusDivHTML = "";
-let href = "/showcase/placeholder.html";
+let href = "showcase/placeholder.html";
 let content = "Please select content from the dropdown menu.";
 let shownMenu = null;
 let shownMenuHasMouseOver = false;
